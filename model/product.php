@@ -48,7 +48,7 @@ class Produit{
     public function detailProduct($id) {
 
         $dbc = $this->connexion();
-        $req = $dbc->prepare('SELECT * FROM product WHERE idProduct = :id');
+        $req = $dbc->prepare('SELECT * FROM product WHERE id = :id');
         $req->bindParam(':id', $id, PDO::PARAM_INT);
         $req->execute();
         $product = $req->fetchAll(PDO::FETCH_OBJ);
@@ -60,17 +60,15 @@ class Produit{
     /**
      * Ajouter un produit
      * Exactement même principe qu'au dessus
-     * @param [type] $idCategory  [description]
-     * @param [type] $title       [description]
+     * @param [type] $name        [description]
      * @param [type] $description [description]
      * @param [type] $price       [description]
      */
-    public function addProduct($idCategory, $title, $description, $price) {
+    public function addProduct($name, $description, $price) {
 
         $dbc = $this->connexion();
-        $req = $dbc->prepare('INSERT INTO product (idCategory, title, description, price) VALUES (:idCategory, :title, :description, :price)');
-        $req->bindParam(':idCategory', $idCategory);
-        $req->bindParam(':title', $title);
+        $req = $dbc->prepare('INSERT INTO product (name, description, price) VALUES (:name, :description, :price)');
+        $req->bindParam(':name', $name);
         $req->bindParam(':description', $description);
         $req->bindParam(':price', $price);
         $req->execute();
@@ -80,34 +78,34 @@ class Produit{
 
     /**
      * Modifier le produit selectionner grâce a son id
-     * @param  [type] $idProduct   [description]
-     * @param  [type] $title       [description]
+     * @param  [type] $id          [description]
+     * @param  [type] $name        [description]
      * @param  [type] $description [description]
      * @param  [type] $price       [description]
      * @return [type]              [description]
      */
-    public function modifyProduct($idProduct, $title, $description, $price) {
+    public function modifyProduct($id, $name, $description, $price) {
 
         $dbc = $this->connexion();
-        $req = $dbc->prepare('UPDATE product SET title = :title, description = :description, price = :price WHERE idProduct = :idProduct');
-        $req->bindParam(':title', $title);
+        $req = $dbc->prepare('UPDATE product SET name = :name, description = :description, price = :price WHERE id = :id');
+        $req->bindParam(':name', $name);
         $req->bindParam(':description', $description);
         $req->bindParam(':price', $price);
-        $req->bindParam(':idProduct', $idProduct);
+        $req->bindParam(':id', $id);
         $req->execute();
 
     }
 
     /**
      * Supprimer un produit
-     * @param  [type] $idProduct [description]
+     * @param  [type] $id        [description]
      * @return [type]            [description]
      */
-    public function deleteProduct($idProduct) {
+    public function deleteProduct($id) {
 
         $dbc = $this->connexion();
-        $req = $dbc->prepare('DELETE FROM product WHERE idProduct = :idProduct');
-        $req->bindParam(':idProduct', $idProduct);
+        $req = $dbc->prepare('DELETE FROM product WHERE id = :id');
+        $req->bindParam(':id', $id);
         $req->execute();
         
     }
