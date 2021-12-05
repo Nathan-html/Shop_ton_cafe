@@ -16,7 +16,7 @@ switch ($url[count($url)-1]) {
         
     // Page Delete of the CRUD
     case 'valider':
-        include 'controller/instanceProduit.php';
+        include 'Controller/ProductController.php';
         break;
 
     // Page Update of the CRUD
@@ -26,8 +26,8 @@ switch ($url[count($url)-1]) {
 
     // Page Delete of the CRUD
     case 'delete':
-    include 'controller/instanceProduit.php';
-    break;
+        include 'Controller/ProductController.php';
+        break;
 
     default :
         if($url[count($url)-2]==$titleSite && $url[count($url)-1]==''){

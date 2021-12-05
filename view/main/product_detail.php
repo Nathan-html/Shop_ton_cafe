@@ -1,9 +1,8 @@
-<?php include 'controller/instanceProduit.php'; ?>
+<?php include 'Controller/ProductController.php'; ?>
 
 <main class="container">
-<!-- Affichage du détail du produit via l'objet créer via la requete 2 -->
     <div class="d-flex justify-content-center text-end m-5">
-        <h1><?php echo $getDetail[0]->title;?></h1>
+        <h1><?php echo $getDetail[0]->name;?></h1>
         <p class="px-1"><?php echo $getDetail[0]->price;?> €</p>
     </div>
     <div class="shadow p-3">
